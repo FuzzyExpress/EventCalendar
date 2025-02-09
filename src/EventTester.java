@@ -3,6 +3,8 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
+import static java.lang.System.exit;
+
 public class EventTester {
 
     static LocalDateTime deadline = LocalDateTime.of(2024, 12, 7, 17, 0);
@@ -44,11 +46,24 @@ public class EventTester {
     };
 
     public static void main(String[] args) {
+        boolean allTestsPassed = true;
+        
         System.out.println("Testing Getters..." + (testGetters()? "passed" : "failed"));
+        allTestsPassed &= testGetters();
+        
         System.out.println("Testing Setters..." + (testSetters()? "passed" : "failed"));
+        allTestsPassed &= testSetters();
+        
         System.out.println("Testing implements Comparable..." + (testComparingEvents()? "passed" : "failed"));
+        allTestsPassed &= testComparingEvents();
+        
         System.out.println("Testing get meeting duration..." + (testMeetingDuration()? "passed" : "failed"));
+        allTestsPassed &= testMeetingDuration();
+        
         System.out.println("Testing implements Completable..." + (testCompletable()? "passed" : "failed"));
+        allTestsPassed &= testCompletable();
+        
+        exit( allTestsPassed ? 0 : 1 );
     }
 
     public static boolean testGetters() {
@@ -57,7 +72,7 @@ public class EventTester {
                 && lastDeadline.getDateTime().equals(deadline)
                 && firstMeeting.getEndDateTime().equals(end)
                 && firstMeeting.getLocation().equals(location)
-                );
+            );
     }
 
     public static boolean testSetters() {
