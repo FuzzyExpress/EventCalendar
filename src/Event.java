@@ -7,12 +7,12 @@ abstract class Event implements Comparable<Event> {
     /**
      * The name of the event.
      */
-    protected String name;
+    private String name;
 
     /**
      * The date and time when the event starts.
      */
-    protected LocalDateTime dateTime;
+    private LocalDateTime dateTime;
 
     /**
      * Constructs an Event with the specified name and date/time.
@@ -30,8 +30,9 @@ abstract class Event implements Comparable<Event> {
      *
      * @return the name of the event
      */
-    public abstract String getName();
-
+    public String getName() {
+        return name;
+    }
 
     /**
      * Returns the date and time of the event.

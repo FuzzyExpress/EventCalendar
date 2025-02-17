@@ -45,7 +45,7 @@ public class Meeting extends Event implements Completable {
      * @return the duration between start and end time
      */
     public Duration getDuration() {
-        return Duration.between(this.dateTime, this.endDateTime);
+        return Duration.between(getDateTime(), this.endDateTime);
     }
 
     /**
@@ -98,6 +98,6 @@ public class Meeting extends Event implements Completable {
 
     @Override
     public String getName() {
-        return "";
+        return super.getName();
     }
 }

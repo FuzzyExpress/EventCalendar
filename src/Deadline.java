@@ -19,7 +19,7 @@ public class Deadline extends Event implements Completable
 
     @Override
     public String getName() {
-        return this.name;
+        return super.getName();
     }
 
     /**
